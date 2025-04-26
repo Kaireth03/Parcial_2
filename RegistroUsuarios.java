@@ -20,12 +20,16 @@ public class RegistroUsuarios {
             return;
         }
 
-        System.out.print("Ingrese su contraseña: ");
-        String contraseña = scanner.nextLine();
-        if (!ValidadorUsuario.validarContraseña(contraseña)) {
-            System.out.println("Contraseña inválida. Debe tener al menos 8 caracteres, incluir mayúsculas, minúsculas, números y símbolos.");
-            return;
-        }
+        String contraseña;
+        do {
+            System.out.print("Ingrese su contraseña: ");
+            contraseña = scanner.nextLine();
+
+            if (!ValidadorUsuario.validarContraseña(contraseña)) {
+                System.out.println("Contraseña inválida. Debe tener al menos 8 caracteres, incluir mayúsculas, minúsculas, números y símbolos.");
+            }
+
+        } while (!ValidadorUsuario.validarContraseña(contraseña));
 
         Usuario nuevoUsuario = new Usuario(nombre, correo, contraseña);
         System.out.println("\nUsuario registrado con éxito:");
